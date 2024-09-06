@@ -66,9 +66,9 @@ class Controller extends BaseController{
 
     //4
     public function delete_checklist($id){
-        $data=checklist::findOrFail($id);
+        $data = Checklist::where('id', $id)->where('user_id', auth()->id())->first();
         $data->delete();
-        return response()->json(['message' => 'Checklist deleted']);
+        return response()->json(['message' => 'Checklist berhasil sihapus']);
     }
 
     //5
